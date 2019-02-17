@@ -4,20 +4,63 @@
 #include "version.h"
 #include "keymap_german.h"
 #include "keymap_nordic.h"
+#include "keymap_french.h"
+#include "keymap_spanish.h"
+
+#define LCGS(code) LCTL(LGUI(LSFT(code)))
+#define LCS(code) LCTL(LSFT(code))
 
 enum custom_keycodes {
-  PLACEHOLDER = SAFE_RANGE, // can always be here
+  PLACEHOLDER = SAFE_RANGE,       // can always be here
   EPRM,
   RGB_SLD,
-  
+
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [0] = LAYOUT_ergodox(KC_ESCAPE,KC_1,KC_2,KC_3,KC_4,KC_5,KC_MINUS,KC_TAB,KC_Q,KC_W,KC_E,KC_R,KC_T,KC_TRANSPARENT,KC_BSPACE,KC_A,KC_S,KC_D,KC_F,KC_G,KC_DELETE,KC_Z,KC_X,KC_C,KC_V,KC_B,TG(2),KC_TRANSPARENT,KC_LEFT,KC_UP,KC_DOWN,KC_RIGHT,KC_LGUI,KC_CAPSLOCK,KC_TRANSPARENT,ALT_T(KC_APPLICATION),SFT_T(KC_SPACE),CTL_T(KC_NO),KC_EQUAL,KC_6,KC_7,KC_8,KC_9,KC_0,KC_GRAVE,KC_TRANSPARENT,KC_Y,KC_U,KC_I,KC_O,KC_P,KC_LBRACKET,KC_H,KC_J,KC_K,KC_L,KC_SCOLON,KC_QUOTE,KC_TRANSPARENT,KC_N,KC_M,KC_COMMA,KC_DOT,KC_SLASH,KC_RBRACKET,KC_HOME,KC_PGUP,KC_PGDOWN,KC_END,KC_BSLASH,LCTL(KC_C),LCTL(KC_V),LCTL(KC_X),TG(1),RSFT_T(KC_ENTER),RCTL_T(KC_NO)),
+  [0] = LAYOUT_ergodox(
+    // left hand
+    KC_ESC,          KC_LPRN,         KC_MINS,         KC_QUES,         KC_DQUO,         KC_RPRN,         KC_SLSH,
+    KC_TAB,          KC_Y,            KC_P,            KC_O,            KC_U,            KC_J,            _______,
+    KC_BSPC,         KC_I,            KC_N,            KC_E,            KC_A,            KC_COMM,
+    KC_DEL,          KC_Q,            KC_Z,            KC_SCLN,         KC_DOT,          KC_GRV,          KC_APP,
+    KC_P5,           KC_P7,           KC_P9,           KC_P3,           KC_P1,
+                                                                                         KC_LALT,         KC_LCMD,
+                                                                                                          _______,
+                                                                        SFT_T(XXXXXXX),  KC_SPC,          CTL_T(XXXXXXX),
+        // right hand
+        KC_BSLS,         KC_SCLN,         KC_COLN,         KC_COMM,         KC_DOT,          KC_EXLM,         TO(1),
+        KC_EQL,          KC_K,            KC_D,            KC_L,            KC_C,            KC_W,            KC_LBRC,
+                         KC_M,            KC_H,            KC_T,            KC_S,            KC_R,            KC_QUOT,
+        RALT_T(XXXXXXX), KC_B,            KC_F,            KC_G,            KC_V,            KC_X,            KC_RBRC,
+        KC_P4,           KC_P8,           KC_P2,           KC_P6,           KC_P0,
+        OSL(1),          KC_NLCK,
+        KC_CLCK,
+        RCTL_T(XXXXXXX), KC_ENT,          RSFT_T(XXXXXXX)
+    ),
 
-  [1] = LAYOUT_ergodox(KC_ESCAPE,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,KC_F11,KC_TAB,KC_HOME,KC_PGUP,KC_PGDOWN,KC_END,KC_INSERT,KC_TRANSPARENT,KC_BSPACE,KC_LEFT,KC_UP,KC_DOWN,KC_RIGHT,KC_APPLICATION,TO(0),KC_DELETE,LCTL(KC_X),LCTL(KC_C),LCTL(KC_V),KC_TRANSPARENT,TG(2),KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_LGUI,KC_SPACE,KC_TRANSPARENT,ALT_T(KC_APPLICATION),SFT_T(KC_ENTER),CTL_T(KC_NO),KC_F12,KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_MS_BTN1,KC_MS_BTN3,KC_MS_BTN2,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_MS_LEFT,KC_MS_UP,KC_MS_DOWN,KC_MS_RIGHT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT),
 
-  [2] = LAYOUT_ergodox(KC_ESCAPE,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TAB,KC_AMPR,KC_LPRN,KC_RPRN,KC_PIPE,KC_TRANSPARENT,KC_TRANSPARENT,KC_BSPACE,KC_TILD,KC_AT,KC_DLR,KC_CIRC,KC_TRANSPARENT,TO(0),KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_LEFT,KC_UP,KC_DOWN,KC_RIGHT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,ALT_T(KC_APPLICATION),SFT_T(KC_SPACE),CTL_T(KC_NO),KC_TRANSPARENT,KC_TRANSPARENT,KC_EQUAL,KC_KP_0,KC_KP_DOT,KC_KP_SLASH,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_KP_1,KC_KP_2,KC_KP_3,KC_KP_MINUS,KC_TRANSPARENT,KC_TRANSPARENT,KC_KP_4,KC_KP_5,KC_KP_6,KC_KP_PLUS,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_KP_7,KC_KP_8,KC_KP_9,KC_KP_ASTERISK,KC_TRANSPARENT,KC_HOME,KC_PGUP,KC_PGDOWN,KC_END,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,TO(1),KC_ENTER,KC_BSPACE),
+  [1] = LAYOUT_ergodox(
+    // left hand
+    KC_ESC,          KC_F1,           KC_F2,           KC_F3,           KC_F4,           KC_F5,           KC_F6,
+    KC_TAB,          KC_F7,           KC_F8,           KC_F9,           KC_F10,          KC_F11,          KC_F12,
+    KC_BSPC,         KC_LEFT,         KC_UP,           KC_DOWN,         KC_RGHT,         KC_ENT,
+    KC_DEL,          LCTL(KC_Z),      LCTL(KC_X),      LCTL(KC_C),      LCTL(KC_V),      LCTL(KC_A),      KC_APP,
+    _______,         KC_HOME,         KC_PGUP,         KC_PGDN,         KC_END,
+                                                                                         ALT_T(XXXXXXX),  KC_LCMD,
+                                                                                                          _______,
+                                                                        SFT_T(XXXXXXX),  KC_SPC,          CTL_T(XXXXXXX),
+        // right hand
+        _______,         _______,         _______,         KC_0,            KC_PDOT,         KC_PSLS,         TO(0),
+        KC_EQL,          _______,         KC_1,            KC_2,            KC_3,            KC_PMNS,         _______,
+                         _______,         KC_4,            KC_5,            KC_6,            KC_PPLS,         _______,
+        KC_ALGR,         _______,         KC_7,            KC_8,            KC_9,            KC_PAST,         _______,
+        KC_LEFT,         KC_UP,           KC_DOWN,         KC_RGHT,         _______,
+        _______,         KC_NLCK,
+        KC_CLCK,
+        KC_RCTL,         KC_ENT,          KC_RSFT
+    ),
+
 
 };
 
